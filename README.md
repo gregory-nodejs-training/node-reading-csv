@@ -1,2 +1,2 @@
 # node-reading-csv
-Reading CSV files and save in a mysql database, using Typescript, Expres, Prisma and Multer.
+Reading CSV files and saving data in a mysql database, using Typescript, Express, Prisma and Multer.
