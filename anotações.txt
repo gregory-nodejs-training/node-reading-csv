@@ -1,6 +1,6 @@
 //================== ANOTAÇÕES
 
-	- inicializar o projeto com yarn init -yarn
+	- inicializar o projeto com yarn init -y
 	
 	- adicionar dependências:
 	
