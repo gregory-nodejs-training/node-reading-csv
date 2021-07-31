@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { ApiUtil } from "../../../utils/ApiUtil";
+import { HTTP400Error } from "../../../exceptions/HTTP400Error";
+import { ApiUtil } from "../../../shared/utils/ApiUtil";
 import { CreateProductService } from "./CreateProductService";
 
 class CreateProductController {
@@ -7,9 +8,7 @@ class CreateProductController {
         const productService = new CreateProductService();
         const { file } = request;
         if (!file) {
-            return response.status(400).json(
-                ApiUtil.createResponseError('Need to attach some file!')
-            );
+            throw new HTTP400Error("Need to attach some file!");
         }
         const { buffer } = file;
         const products = await productService.execute(buffer);

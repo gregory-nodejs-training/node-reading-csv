@@ -3,6 +3,7 @@ import { Readable } from "stream";
 import readline from "readline";
 import { client } from "../../../database/client";
 import { Product } from "@prisma/client";
+import { HTTP400Error } from "../../../exceptions/HTTP400Error";
 
 interface ProductInput {
     codeBar: string,
@@ -17,7 +18,7 @@ class CreateProductService {
         const productsLine = this.createReadline(worksheet);
         
         const products: Product[] = [];
-
+        
         for await (let line of productsLine) {
             const productLineSplit = line.split(";");
             const [ codeBar, description, priceString, quantityString ] = productLineSplit;
@@ -68,7 +69,7 @@ class CreateProductService {
             }
         });
         if (!product) {
-            throw new Error("Error creating product.");
+            throw new HTTP400Error("Error creating product.");
         }
         return product;
     }

@@ -1,5 +1,4 @@
 import PdfPrinter from "pdfmake";
-import fs from "fs";
 
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 
@@ -23,6 +22,7 @@ class PDFMaker {
     async createPDF(docDefinitions: TDocumentDefinitions) {
         const pdfDoc = this.printer.createPdfKitDocument(docDefinitions);
     
+        //IF WANT TO GENERATE PDF INTERNALLY IN APP:
         // pdfDoc.pipe(fs.createWriteStream("Relatorio.pdf"));
     
         const pdf = await this.getPDFChunks(pdfDoc);

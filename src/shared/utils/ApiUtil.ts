@@ -1,4 +1,4 @@
-import { ResponseObject } from "../useCases/ResponseObject";
+import { ResponseObject } from "../../useCases/ResponseObject";
 
 class ApiUtil {
     static createResponseError<T>(error: string) : ResponseObject<T> {

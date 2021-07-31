@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ApiUtil } from "../../../utils/ApiUtil";
+import { HTTP400Error } from "../../../exceptions/HTTP400Error";
 import { GetProductsPDFReportService } from "./GetProductsPDFReportService";
 
 class GetProductsPDFReportController {
@@ -10,7 +10,7 @@ class GetProductsPDFReportController {
         const pdfReport = await getProductsPDFReportService.execute();
 
         if (!pdfReport) {
-            return response.status(400).json(ApiUtil.createResponseError("Can't generate PDF!"));
+            throw new HTTP400Error("Can't generate PDF!");
         }
 
         return response.end(pdfReport);

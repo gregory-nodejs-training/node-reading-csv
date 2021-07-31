@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { ApiUtil } from "../../../utils/ApiUtil";
+import { HTTP404Error } from "../../../exceptions/HTTP404Error";
+import { ApiUtil } from "../../../shared/utils/ApiUtil";
 import { GetAllProductsService } from "./GetAllProductsService";
 
 class GetAllProductsController {
@@ -9,7 +10,7 @@ class GetAllProductsController {
         const products = await getAllProductsService.execute();
 
         if (!products) {
-            return response.status(404).json(ApiUtil.createResponseError("Products not found."))
+            throw new HTTP404Error("Products not found.");
         }
 
         return response.json(ApiUtil.createResponseData(products));
