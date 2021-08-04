@@ -1,4 +1,4 @@
-import { HttpStatusCode } from "../enums/HttpStatusCode";
+import { HttpStatusCode } from "../shared/entities/HttpStatusCode";
 import { BaseError } from "./BaseError";
 
 class HTTP404Error extends BaseError {
